@@ -1,0 +1,12 @@
+services:
+  - docker
+
+before_install:
+  - chmod +x -R tests/
+  - chmod +x -R scripts/
+  - chmod +x -R bin/
+  - docker build -t mikaxii/docker-buildroot .
+  
+script:
+  - tests/gitclone.sh
+
