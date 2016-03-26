@@ -1,5 +1,4 @@
 # docker-buildroot for recalbox
-[![Build Status](https://travis-ci.org/MikaXII/docker-buildroot.svg)](https://travis-ci.org/MikaXII/docker-buildroot)
 
 [Recalbox-buildroot](https://github.com/recalbox/recalbox-buildroot) in a docker container
 
@@ -31,4 +30,4 @@ Examples :
 - build recalbox rb-4.0.X for rpi1 :  
 `sudo docker run -v /tmp/recalboxbuild/:/usr/share/recalbox/build/ -t -e "RECALBOX_ARCH=rpi1" -e "RECALBOX_BRANCH=rb-4.0.X" docker-recalbox`
 - build recalbox rb-4.0.X for rpi1 and avoid cleaning all the target of the last build :  
-`sudo docker run -v /tmp/recalboxbuild/:/usr/share/recalbox/build/ -t -e "RECALBOX_ARCH=rpi1" -e "RECALBOX_BRANCH=rb-4.0.X" docker-recalbox`
+`sudo docker run -v /tmp/recalboxbuild/:/usr/share/recalbox/build/ -t -e "RECALBOX_ARCH=rpi1" -e "RECALBOX_BRANCH=rb-4.0.X"  -e "RECALBOX_CLEANBUILD=0" docker-recalbox`
