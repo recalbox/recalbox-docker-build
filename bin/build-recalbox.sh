@@ -9,10 +9,10 @@ if [[ -z "${RECALBOX_CLEANBUILD}" ]];then
   RECALBOX_CLEANBUILD="1"
 fi
 
-repo=/usr/share/recalbox/repo
+build=/usr/share/recalbox/build
 branch="${RECALBOX_BRANCH}"
 arch="${RECALBOX_ARCH}"
-repodir="${repo}/${branch}/${arch}"
+builddir="${build}/${branch}/${arch}"
 cleanbuild="${RECALBOX_CLEANBUILD}"
 
 # Cleanning
@@ -26,14 +26,14 @@ else
 fi
 
 # Cloning
-if [[ ! -f "${repodir}" ]]; then
-  mkdir -p "${repodir}"
-  echo "Cloning recalbox in ${repodir}"
-  git clone https://github.com/recalbox/recalbox-buildroot.git "${repodir}"
+if [[ ! -f "${builddir}" ]]; then
+  mkdir -p "${builddir}"
+  echo "Cloning recalbox in ${builddir}"
+  git clone https://github.com/recalbox/recalbox-buildroot.git "${builddir}"
 fi
 
 # Branch selection
-cd "${repodir}"
+cd "${builddir}"
 echo "Switching to branch $branch"
 git checkout $branch
 git pull origin $branch
