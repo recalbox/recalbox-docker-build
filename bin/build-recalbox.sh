@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/bash -e
+
 if [[ -z "${RECALBOX_BRANCH}" ]];then
   RECALBOX_BRANCH="master"
 fi
@@ -18,18 +19,18 @@ cleanbuild="${RECALBOX_CLEANBUILD}"
 # Cleanning
 if [[ "${cleanbuild}" == "1" ]];then
   echo "Cleaning last build"
-  make clean
+  make clean || true
 else
   echo "Soft clean recalbox packages"
-  rm dl/recalbox-*
-  rm output/build/recalbox-*
+  rm dl/recalbox-* || true
+  rm output/build/recalbox-* || true
 fi
 
 # Cloning
-if [[ ! -f "${builddir}" ]]; then
+if [[ ! -d "${builddir}" ]]; then
   mkdir -p "${builddir}"
   echo "Cloning recalbox in ${builddir}"
-  git clone https://github.com/recalbox/recalbox-buildroot.git "${builddir}"
+  git clone https://github.com/${RECALBOX_FORK}/recalbox-buildroot.git "${builddir}"
 fi
 
 # Branch selection
