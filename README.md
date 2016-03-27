@@ -37,5 +37,5 @@ Each time you start a container with the run command, a new container is created
 To avoid that, you can :
 - Automatically remove the container at the end of the compilation. For this you can add the `--rm` option when you run the docker command `sudo docker run --rm -t -v   /path/to/your/images/directory/:/usr/share/recalbox/build/rpi3/output/images/recalbox recalbox-docker-build`
 - Reuse the last container using the docker start command :  
-`sudo docker ps -a` will give you the list of all the containers on your system. Use sudo `sudo docker start -i [containerID]` to start an existing container
+`sudo docker ps -a` will give you the list of all the containers on your system. Use `sudo docker start -i [containerID]` to start an existing container
 - Open a bash tty on the container you start : `sudo docker run --rm -ti -v /path/to/your/images/directory/:/usr/share/recalbox/build/rpi3/output/images/recalbox recalbox-docker-build /bin/bash` and then call run `/usr/local/bin/build-recalbox.sh` to start the compilation.
