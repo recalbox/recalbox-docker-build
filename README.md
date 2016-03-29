@@ -23,6 +23,7 @@ ENV variables :
 - *RECALBOX_BRANCH* : set the branch to compile (default rb-4.1.X)
 - *RECALBOX_ARCH* : set the Raspberry pi arch you want to use between rpi1, rpi2, rpi3 (default rpi3)
 - *RECALBOX_CLEANBUILD* : clean all the compiled programs when restarting a build (default 1)
+- *RECALBOX_SINGLE_PKG* : Build only the selected package (default NULL)
 
 **Examples :** 
 - build recalbox rb-4.1.X (default) for rpi2 :  
