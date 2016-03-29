@@ -23,6 +23,10 @@ ENV variables :
 - *RECALBOX_BRANCH* : set the branch to compile (default rb-4.1.X)
 - *RECALBOX_ARCH* : set the Raspberry pi arch you want to use between rpi1, rpi2, rpi3 (default rpi3)
 - *RECALBOX_CLEANBUILD* : clean all the compiled programs when restarting a build (default 1)
+- *RECALBOX_SINGLE_PKG (optional)* : Build only the selected package (default NULL)
+
+> For ENV RECALBOX_SINGLE_PKG : if you work on a specifique package and you have already the same version of recalbox on your raspberry, you can built only your package rather than build all system.
+
 
 **Examples :** 
 - build recalbox rb-4.1.X (default) for rpi2 :  
@@ -31,6 +35,10 @@ ENV variables :
 `sudo docker run -v /tmp/recalboxbuild/:/usr/share/recalbox/build/ -t -e "RECALBOX_ARCH=rpi1" -e "RECALBOX_BRANCH=rb-4.0.X" recalbox-docker-build`
 - build recalbox rb-4.0.X for rpi1 and avoid cleaning all the target of the last build :  
 `sudo docker run -v /tmp/recalboxbuild/:/usr/share/recalbox/build/ -t -e "RECALBOX_ARCH=rpi1" -e "RECALBOX_BRANCH=rb-4.0.X"  -e "RECALBOX_CLEANBUILD=0" recalbox-docker-build`
+- build only virtualgamepad for recalbox rb-4.1.X (default) for rpi2 :  
+`sudo docker run -v /tmp/recalboxbuild/:/usr/share/recalbox/build/ -t -e "RECALBOX_ARCH=rpi2" -e "RECALBOX_SINGLE_PKG=recalbox-api" recalbox-docker-build`
+ - get compiled package to `/tmp/recalboxbuild/rpi2/output/target/<path(s)-to-compiled-binarys-or-installed-files>` and copy `<path(s)-to-compiled-binarys/files>` to your recalbox folder for tests. 
+
 
 **4 - Container management**  
 Each time you start a container with the run command, a new container is created from the docker image.  

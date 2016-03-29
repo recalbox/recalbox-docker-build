@@ -40,7 +40,11 @@ git checkout $branch
 git pull origin $branch
 
 # Building
-echo "BUild recalbox for arch ${arch} (defconfig : recalbox-${arch}_defconfig)"
+echo "Build recalbox for arch ${arch} (defconfig : recalbox-${arch}_defconfig)"
 make recalbox-${arch}_defconfig
-make
-
+if [[ -z "${RECALBOX_SINGLE_PKG}" ]];then
+  make 
+else
+   echo "Only build package ${RECALBOX_SINGLE_PKG} for arch ${arch}" 
+   make "${RECALBOX_SINGLE_PKG}"
+fi
