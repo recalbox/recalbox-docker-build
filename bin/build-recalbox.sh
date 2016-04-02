@@ -37,7 +37,7 @@ fi
 cd "${builddir}"
 echo "Switching to branch $branch"
 git checkout $branch
-git pull origin $branch
+git pull --rebase origin $branch
 
 # Building
 echo "Build recalbox for arch ${arch} (defconfig : recalbox-${arch}_defconfig)"
