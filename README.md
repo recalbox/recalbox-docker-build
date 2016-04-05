@@ -6,11 +6,14 @@ Build the recalbox os with a single command !
 
 You will be able to test and modify recalboxos with no configuration effort.
 
-**1 - Build the image with :**  
-`sudo docker build -t recalbox-docker-build https://github.com/recalbox/recalbox-docker-build.git`
+**1 - Pull the image with :**  
+`sudo docker pull recalbox/recalbox-docker-build`
 
-**2 - Start the compilation with :**   
-`sudo docker run -t -v /path/to/your/build/directory/:/usr/share/recalbox/build/ recalbox-docker-build`
+**2 - Or build your own image with :**  
+`sudo docker build -t <name-of-you-want> https://github.com/recalbox/recalbox-docker-build.git`
+
+**3 - Start the compilation with :**   
+`sudo docker run -t -v /path/to/your/build/directory/:/usr/share/recalbox/build/ recalbox/recalbox-docker-build`
 
 **3 - Customize the build :**   
 The  `-v /path/to/your/build/directory/:/usr/share/recalbox/build/` create the data volume so you can access the compilation file directly on your host. Go to `/path/to/your/build/directory/` and see the rpiX directory with the whole compilation files in it.
