@@ -1,10 +1,13 @@
 #!/bin/bash -e
 
+if [[ -z "${RECALBOX_FORK}" ]];then
+  RECALBOX_FORK="recalbox"
+fi
 if [[ -z "${RECALBOX_BRANCH}" ]];then
-  RECALBOX_BRANCH="master"
+  RECALBOX_BRANCH="rb-4.1.X"
 fi
 if [[ -z "${RECALBOX_ARCH}" ]];then
-  RECALBOX_ARCH="rpi2"
+  RECALBOX_ARCH="rpi3"
 fi
 if [[ -z "${RECALBOX_CLEANBUILD}" ]];then
   RECALBOX_CLEANBUILD="1"
