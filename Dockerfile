@@ -14,6 +14,10 @@ ENV RECALBOX_ARCH rpi3
 ENV RECALBOX_CLEANBUILD 1
 # use parent folder for downloads and host builds
 ENV RECALBOX_DL_BUILD_PARENT_FOLDER 0
+# recalbox version to use for recalbox.version
+ENV RECALBOX_VERSION_LABEL ""
+# recalbox message to show on update
+ENV RECALBOX_UPDATE_MESSAGE ""
 
 ENV TERM xterm
 
