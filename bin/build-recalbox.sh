@@ -42,6 +42,7 @@ fi
 # Branch selection
 cd "${builddir}"
 echo "Switching to branch $branch"
+git reset --hard HEAD
 git checkout $branch
 git pull --rebase origin $branch
 
