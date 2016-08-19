@@ -12,6 +12,8 @@ ENV RECALBOX_BRANCH rb-4.1.X
 ENV RECALBOX_ARCH rpi3
 # clean before build when rebuilding
 ENV RECALBOX_CLEANBUILD 1
+# use parent folder for downloads and host builds
+ENV RECALBOX_DL_BUILD_PARENT_FOLDER 0
 
 ENV TERM xterm
 

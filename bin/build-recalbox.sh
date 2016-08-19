@@ -42,10 +42,18 @@ echo "Switching to branch $branch"
 git checkout $branch
 git pull --rebase origin $branch
 
-# Building
-echo "Build recalbox for arch ${arch} (defconfig : recalbox-${arch}_defconfig)"
+# Configuring
+echo "Configuring recalbox for arch ${arch} (defconfig : recalbox-${arch}_defconfig)"
 make recalbox-${arch}_defconfig
+
+# Changing dl and host directories
+if [[ "$RECALBOX_DL_BUILD_PARENT_FOLDER" != "0" ]];then
+  sed -i "s|BR2_DL_DIR=\"\$(TOPDIR)/dl\"|BR2_DL_DIR=\"\$(TOPDIR)/../dl\"|g" .config
+  sed -i "s|BR2_HOST_DIR=\"\$(BASE_DIR)/host\"|BR2_HOST_DIR=\"\$(TOPDIR)/../host-${arch}\"|g" .config
+fi
+
 if [[ -z "${RECALBOX_SINGLE_PKG}" ]];then
+  echo "Building recalbox for arch ${arch}"
   make 
 else
    echo "Only build package ${RECALBOX_SINGLE_PKG} for arch ${arch}" 
