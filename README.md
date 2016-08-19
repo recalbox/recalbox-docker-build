@@ -27,7 +27,9 @@ ENV variables :
 - *RECALBOX_ARCH* : set the Raspberry pi arch you want to use between rpi1, rpi2, rpi3 (default rpi3)
 - *RECALBOX_CLEANBUILD* : clean all the compiled programs when restarting a build (default 1)
 - *RECALBOX_SINGLE_PKG (optional)* : Build only the selected package (default NULL)
-- *RECALBOX_DL_BUILD_PARENT_FOLDER* : set to 1 to use $TOPDIR/dl to download files and $TOPDIR/host-${RECALBOX_ARCH} to build host binaries (useful if you are compiling many branches)
+- *RECALBOX_DL_BUILD_PARENT_FOLDER* : set to 1 to use $TOPDIR/dl to download files and $TOPDIR/host-${RECALBOX_ARCH} to build host binaries (useful if you are compiling many branches) (default 0)
+- *RECALBOX_VERSION_LABEL* : recalbox version to use for recalbox.version (default ${RECALBOX_BRANCH}-${RECALBOX_ARCH}-${DATE})
+- *RECALBOX_UPDATE_MESSAGE* : recalbox message to show on update (default "")
 
 > For ENV RECALBOX_SINGLE_PKG : if you work on a specifique package and you have already the same version of recalbox on your raspberry, you can built only your package rather than build all system.
 
