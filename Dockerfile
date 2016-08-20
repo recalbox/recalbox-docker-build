@@ -12,8 +12,12 @@ ENV RECALBOX_BRANCH rb-4.1.X
 ENV RECALBOX_ARCH rpi3
 # clean before build when rebuilding
 ENV RECALBOX_CLEANBUILD 1
-# use parent folder for downloads and host builds
-ENV RECALBOX_DL_BUILD_PARENT_FOLDER 0
+# use parent folder for downloads
+ENV RECALBOX_DL_PARENT_FOLDER 0
+# use parent folder for host builds
+ENV RECALBOX_HOST_PARENT_FOLDER 0
+# git reset --hard HEAD before pulling
+ENV RECALBOX_GIT_RESET 1
 # recalbox version to use for recalbox.version
 ENV RECALBOX_VERSION_LABEL ""
 # recalbox message to show on update

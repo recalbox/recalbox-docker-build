@@ -9,26 +9,44 @@ fi
 if [[ -z "${RECALBOX_ARCH}" ]];then
   RECALBOX_ARCH="rpi3"
 fi
-if [[ -z "${RECALBOX_CLEANBUILD}" ]];then
-  RECALBOX_CLEANBUILD="1"
-fi
 if [[ -z "${RECALBOX_VERSION_LABEL}" ]];then
   RECALBOX_VERSION_LABEL="${RECALBOX_BRANCH}-${RECALBOX_ARCH}-`date +%Y-%m-%d-%Hh%M`"
+fi
+if [[ "$RECALBOX_DL_PARENT_FOLDER" == "1" ]] || [[ "$RECALBOX_DL_PARENT_FOLDER" == "true" ]]
+  topdownload="1"
+  downloaddir="../dl"
+else
+  topdownload="0"
+  downloaddir="dl"
+fi
+if [[ "$RECALBOX_HOST_PARENT_FOLDER" == "1" ]] || [[ "$RECALBOX_HOST_PARENT_FOLDER" == "true" ]]
+  tophost="1"
+else
+  tophost="0"
+fi
+if [[ "$RECALBOX_CLEANBUILD" == "1" ]] || [[ "$RECALBOX_CLEANBUILD" == "true" ]]
+  cleanbuild="1"
+else
+  cleanbuild="0"
+fi
+if [[ "$RECALBOX_GIT_RESET" == "1" ]] || [[ "$RECALBOX_GIT_RESET" == "true" ]]
+  hardreset="1"
+else
+  hardreset="0"
 fi
 
 build=/usr/share/recalbox/build
 branch="${RECALBOX_BRANCH}"
 arch="${RECALBOX_ARCH}"
 builddir="${build}/${branch}/${arch}"
-cleanbuild="${RECALBOX_CLEANBUILD}"
 
 # Cleanning
-if [[ "${cleanbuild}" == "1" ]] || [[ "${cleanbuild}" == "true" ]];then
+if [[ "${cleanbuild}" == "1" ]];then
   echo "Cleaning last build"
   make clean || true
 else
   echo "Soft clean recalbox packages"
-  rm dl/recalbox-* || true
+  rm $downloaddir/recalbox-* || true
   rm output/build/recalbox-* || true
 fi
 
@@ -42,7 +60,9 @@ fi
 # Branch selection
 cd "${builddir}"
 echo "Switching to branch $branch"
-git reset --hard HEAD
+if [[ "$hardreset" == "1" ]];then
+  git reset --hard HEAD
+fi
 git checkout $branch
 git pull --rebase origin $branch
 
@@ -51,8 +71,10 @@ echo "Configuring recalbox for arch ${arch} (defconfig : recalbox-${arch}_defcon
 make recalbox-${arch}_defconfig
 
 # Changing dl and host directories
-if [[ "$RECALBOX_DL_BUILD_PARENT_FOLDER" == "1" ]] || [[ "$RECALBOX_DL_BUILD_PARENT_FOLDER" == "true" ]];then
+if [[ "$topdownload" == "1" ]];then
   sed -i "s|BR2_DL_DIR=\"\$(TOPDIR)/dl\"|BR2_DL_DIR=\"\$(TOPDIR)/../dl\"|g" .config
+fi
+if [[ "$tophost" == "1" ]];then
   sed -i "s|BR2_HOST_DIR=\"\$(BASE_DIR)/host\"|BR2_HOST_DIR=\"\$(TOPDIR)/../host-${arch}\"|g" .config
 fi
 
