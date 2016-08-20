@@ -40,16 +40,6 @@ branch="${RECALBOX_BRANCH}"
 arch="${RECALBOX_ARCH}"
 builddir="${build}/${branch}/${arch}"
 
-# Cleanning
-if [[ "${cleanbuild}" == "1" ]];then
-  echo "Cleaning last build"
-  make clean || true
-else
-  echo "Soft clean recalbox packages"
-  rm $downloaddir/recalbox-* || true
-  rm output/build/recalbox-* || true
-fi
-
 # Cloning
 if [[ ! -d "${builddir}" ]]; then
   mkdir -p "${builddir}"
@@ -76,6 +66,16 @@ if [[ "$topdownload" == "1" ]];then
 fi
 if [[ "$tophost" == "1" ]];then
   sed -i "s|BR2_HOST_DIR=\"\$(BASE_DIR)/host\"|BR2_HOST_DIR=\"\$(TOPDIR)/../host-${arch}\"|g" .config
+fi
+
+# Cleanning
+if [[ "${cleanbuild}" == "1" ]];then
+  echo "Cleaning last build"
+  make clean || true
+else
+  echo "Soft clean recalbox packages"
+  rm $downloaddir/recalbox-* || true
+  rm output/build/recalbox-* || true
 fi
 
 # Version
