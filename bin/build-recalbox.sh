@@ -12,24 +12,24 @@ fi
 if [[ -z "${RECALBOX_VERSION_LABEL}" ]];then
   RECALBOX_VERSION_LABEL="${RECALBOX_BRANCH}-${RECALBOX_ARCH}-`date +%Y-%m-%d-%Hh%M`"
 fi
-if [[ "$RECALBOX_DL_PARENT_FOLDER" == "1" ]] || [[ "$RECALBOX_DL_PARENT_FOLDER" == "true" ]]
+if [[ "$RECALBOX_DL_PARENT_FOLDER" == "1" ]] || [[ "$RECALBOX_DL_PARENT_FOLDER" == "true" ]];then
   topdownload="1"
   downloaddir="../dl"
 else
   topdownload="0"
   downloaddir="dl"
 fi
-if [[ "$RECALBOX_HOST_PARENT_FOLDER" == "1" ]] || [[ "$RECALBOX_HOST_PARENT_FOLDER" == "true" ]]
+if [[ "$RECALBOX_HOST_PARENT_FOLDER" == "1" ]] || [[ "$RECALBOX_HOST_PARENT_FOLDER" == "true" ]];then
   tophost="1"
 else
   tophost="0"
 fi
-if [[ "$RECALBOX_CLEANBUILD" == "1" ]] || [[ "$RECALBOX_CLEANBUILD" == "true" ]]
+if [[ "$RECALBOX_CLEANBUILD" == "1" ]] || [[ "$RECALBOX_CLEANBUILD" == "true" ]];then
   cleanbuild="1"
 else
   cleanbuild="0"
 fi
-if [[ "$RECALBOX_GIT_RESET" == "1" ]] || [[ "$RECALBOX_GIT_RESET" == "true" ]]
+if [[ "$RECALBOX_GIT_RESET" == "1" ]] || [[ "$RECALBOX_GIT_RESET" == "true" ]];then
   hardreset="1"
 else
   hardreset="0"
