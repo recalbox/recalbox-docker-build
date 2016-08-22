@@ -1,4 +1,4 @@
-FROM java:openjdk-8
+FROM ubuntu:16.04
 MAINTAINER Mika <mika@recalbox.com>
 
 # USER ENV
