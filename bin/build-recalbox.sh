@@ -74,8 +74,8 @@ if [[ "${cleanbuild}" == "1" ]];then
   make clean || true
 else
   echo "Soft clean recalbox packages"
-  rm $downloaddir/recalbox-* || true
-  rm output/build/recalbox-* || true
+  rm -rf $downloaddir/recalbox-* || true
+  rm -rf output/build/recalbox-* || true
 fi
 
 # Version
