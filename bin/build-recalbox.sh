@@ -54,7 +54,7 @@ if [[ "$hardreset" == "1" ]];then
   git reset --hard HEAD
 fi
 
-if [[ "$branch" =~ origin && -n "$GIT_COMMIT" ]];then
+if [[ "$branch" =~ origin && -n "$RECALBOX_GIT_COMMIT" ]];then
   # Case of a remote ref
   git fetch --tags --progress https://github.com/${RECALBOX_FORK}/recalbox-buildroot +refs/pull/*:refs/remotes/origin/pr/*
   git checkout -f $GIT_COMMIT
