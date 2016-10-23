@@ -53,8 +53,15 @@ echo "Switching to branch $branch"
 if [[ "$hardreset" == "1" ]];then
   git reset --hard HEAD
 fi
-git checkout $branch
-git pull --rebase origin $branch
+
+if [[ "$branch" =~ origin && -n "$GIT_COMMIT" ]];then
+  # Case of a remote ref
+  git fetch --tags --progress https://github.com/${RECALBOX_FORK}/recalbox-buildroot +refs/pull/*:refs/remotes/origin/pr/*
+  git checkout -f $GIT_COMMIT
+else
+  git checkout $branch
+  git pull --rebase origin $branch
+fi
 
 # Configuring
 echo "Configuring recalbox for arch ${arch} (defconfig : recalbox-${arch}_defconfig)"

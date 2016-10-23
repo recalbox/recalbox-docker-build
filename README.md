@@ -32,6 +32,7 @@ ENV variables :
 - *RECALBOX_DL_PARENT_FOLDER* : use parent folder for downloads (default 0)
 - *RECALBOX_HOST_PARENT_FOLDER* : use parent folder for host builds (default 0)
 - *RECALBOX_GIT_RESET* : git reset --hard HEAD before pulling (default 1)
+- *RECALBOX_GIT_COMMIT* : the commit to checkout (default last commit on branch)
 
 
 > For ENV RECALBOX_SINGLE_PKG : if you work on a specifique package and you have already the same version of recalbox on your raspberry, you can built only your package rather than build all system.
