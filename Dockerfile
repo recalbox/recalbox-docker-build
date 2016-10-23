@@ -22,6 +22,8 @@ ENV RECALBOX_GIT_RESET 1
 ENV RECALBOX_VERSION_LABEL ""
 # recalbox message to show on update
 ENV RECALBOX_UPDATE_MESSAGE ""
+# recalbox commit to checkout
+ENV RECALBOX_GIT_COMMIT ""
 
 ENV TERM xterm
 
