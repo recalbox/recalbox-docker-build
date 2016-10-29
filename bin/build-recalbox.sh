@@ -79,11 +79,11 @@ fi
 if [[ "${cleanbuild}" == "1" ]];then
   echo "Cleaning last build"
   make clean || true
-else
-  echo "Soft clean recalbox packages"
-  rm -rf $downloaddir/recalbox-* || true
-  rm -rf output/build/recalbox-* || true
 fi
+
+echo "Soft clean recalbox packages"
+rm -rf $downloaddir/recalbox-* || true
+rm -rf output/build/recalbox-* || true
 
 # Version
 echo "${RECALBOX_VERSION_LABEL}" > board/recalbox/fsoverlay/recalbox/recalbox.version
